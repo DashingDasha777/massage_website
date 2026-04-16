@@ -4,51 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Услуги и Цены | Дарья Казакова</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Marck+Script&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="pricing-page">
     <header>
         <nav>
-            <a href="index.html">← На главную</a>
+            <a href="index.html" class="back-link cursive">← На главную</a>
+            <div class="logo cursive">Услуги и Цены</div>
         </nav>
     </header>
 
-    <section class="pricing-info">
-        <span class="discount-badge">на первый сеанс скидка 15%!</span>
-        <h2>Сеансы & Ценность</h2>
-        <table class="price-table">
-            <tr><td>30 минут (тело/лицо)</td><td>2 000 ₽</td></tr>
-            <tr><td>60 минут (тело/лицо)</td><td>4 000 ₽</td></tr>
-            <tr><td>90 минут (тело/лицо)</td><td>5 000 ₽</td></tr>
-            <tr><td>120 минут (тело)</td><td>6 000 ₽</td></tr>
-            <tr><td>Шиацу (80 минут)</td><td>2 500 ₽</td></tr>
-            <tr><td>Тайский (110 минут)</td><td>3 500 ₽</td></tr>
-        </table>
-    </section>
-
-    <section class="certificates">
-        <h2>Подарочные сертификаты</h2>
-        <div class="slider-container">
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <div class="slider">
-                <img src="img/cert1.jpg" class="slide active">
-                <img src="img/cert2.jpg" class="slide">
-                <img src="img/cert3.jpg" class="slide">
+    <main class="container">
+        <section class="pricing-section">
+            <div class="promo-banner cursive">на первый сеанс скидка 15%!</div>
+            <h2 class="serif">Прайс-лист</h2>
+            <div class="price-card">
+                <table class="elegant-table">
+                    <tr><td>30 минут (тело/лицо)</td><td class="price">2 000 ₽</td></tr>
+                    <tr><td>60 минут (тело/лицо)</td><td class="price">4 400 ₽</td></tr>
+                    <tr><td>60 минут (тело+лицо)</td><td class="price">5 600 ₽</td></tr>
+                    <tr><td>90 минут (тело/лицо)</td><td class="price">5 600 ₽</td></tr>
+                    <tr><td>120 минут (тело)</td><td class="price">6 600 ₽</td></tr>
+                    <tr><td>Шиацу (80 минут)</td><td class="price">3 500 ₽</td></tr>
+                    <tr><td>с использованием горячих камней</td><td class="price">+ 300 ₽</td></tr>
+                    <tr><td>альгинатная маска (30 минут)</td><td class="price">1 000 ₽</td></tr>
+                </table>
             </div>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
-    </section>
+        </section>
 
-    <section class="subscriptions">
-        <h2>Абонементы</h2>
-        <div class="sub-list">
-            <div class="sub-item"><span>4 по 60 мин</span> <span>14 400 ₽</span></div>
-            <div class="sub-item"><span>8 по 60 мин</span> <span>25 600 ₽</span></div>
-            <div class="sub-item"><span>6 по 90 мин</span> <span>25 500 ₽</span></div>
-            <div class="sub-item"><span>тело & лицо 8 по 120 мин</span> <span>44 800 ₽</span></div>
-        </div>
-    </section>
+        <section class="certificate-section">
+            <h2 class="serif">Подарочные сертификаты</h2>
+            <p class="cursive text-center">Подарите близким моменты искренней радости</p>
+            
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="slider-display">
+                    <img src="img/cert1.jpg" class="slide active" alt="Сертификат 60 мин">
+                    <img src="img/cert2.jpg" class="slide" alt="Сертификат 90 мин">
+                    <img src="img/cert3.jpg" class="slide" alt="Сертификат 120 мин">
+                </div>
+                <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+        <section class="subscription-section">
+            <h2 class="serif">Абонементы</h2>
+            <div class="subscription-grid">
+                <div class="sub-card">
+                    <span class="sub-title serif">Сеансы по 60 мин</span>
+                    <div class="sub-row"><span>4 сеанса</span> <span>14 400 ₽</span></div>
+                    <div class="sub-row"><span>6 сеансов</span> <span>20 400 ₽</span></div>
+                    <div class="sub-row"><span>8 сеансов</span> <span>25 460 ₽</span></div>
+                </div>
+                <div class="sub-card">
+                    <span class="sub-title serif">Сеансы по 90 мин</span>
+                    <div class="sub-row"><span>6 сеансов</span> <span>30 000 ₽</span></div>
+                    <div class="sub-row"><span>8 сеансов</span> <span>39 300 ₽</span></div>
+                    <div class="sub-row"><span>10 сеансов</span> <span>47 300 ₽</span></div>
+                </div>
+                <div class="sub-card highlighted">
+                    <span class="sub-title serif">Тело & Лицо</span>
+                    <div class="sub-row"><span>4 сеанса (90 мин)</span> <span>19 980 ₽</span></div>
+                    <div class="sub-row"><span>4 сеанса (120 мин)</span> <span>28 850 ₽</span></div>
+                    <div class="sub-row"><span>8 сеансов (120

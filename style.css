@@ -149,3 +149,134 @@ footer {
     font-size: 0.9rem;
     color: #9e9e9e;
 }
+/* --- Pricing & Table Styles --- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.promo-banner {
+    text-align: center;
+    color: #c2185b;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.price-card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(252, 228, 236, 0.5);
+    border: 1px solid var(--romantic-pink);
+}
+
+.elegant-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.elegant-table td {
+    padding: 18px 0;
+    border-bottom: 1px dotted var(--romantic-pink);
+    font-family: var(--body-font);
+}
+
+.price {
+    text-align: right;
+    font-family: var(--serif-font);
+    font-weight: bold;
+    color: var(--primary-purple);
+    font-size: 1.2rem;
+}
+
+/* --- Certificate Slider --- */
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.slider-display {
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slider-btn {
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--primary-purple);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.slider-btn:hover {
+    background: var(--primary-purple);
+    color: white;
+}
+
+/* --- Subscription Cards --- */
+.subscription-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.sub-card {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--romantic-pink);
+}
+
+.sub-card.highlighted {
+    background: linear-gradient(135deg, #fff 0%, var(--romantic-pink) 100%);
+    border: 2px solid var(--primary-purple);
+}
+
+.sub-title {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--primary-purple);
+    text-align: center;
+}
+
+.sub-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--primary-purple);
+    font-size: 1.2rem;
+}

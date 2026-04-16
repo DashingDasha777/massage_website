@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги и Цены | Дарья Казакова</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">← На главную</a>
+        </nav>
+    </header>
+
+    <section class="pricing-info">
+        <span class="discount-badge">на первый сеанс скидка 15%!</span>
+        <h2>Сеансы & Ценность</h2>
+        <table class="price-table">
+            <tr><td>30 минут (тело/лицо)</td><td>2 000 ₽</td></tr>
+            <tr><td>60 минут (тело/лицо)</td><td>4 000 ₽</td></tr>
+            <tr><td>90 минут (тело/лицо)</td><td>5 000 ₽</td></tr>
+            <tr><td>120 минут (тело)</td><td>6 000 ₽</td></tr>
+            <tr><td>Шиацу (80 минут)</td><td>2 500 ₽</td></tr>
+            <tr><td>Тайский (110 минут)</td><td>3 500 ₽</td></tr>
+        </table>
+    </section>
+
+    <section class="certificates">
+        <h2>Подарочные сертификаты</h2>
+        <div class="slider-container">
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="slider">
+                <img src="img/cert1.jpg" class="slide active">
+                <img src="img/cert2.jpg" class="slide">
+                <img src="img/cert3.jpg" class="slide">
+            </div>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="subscriptions">
+        <h2>Абонементы</h2>
+        <div class="sub-list">
+            <div class="sub-item"><span>4 по 60 мин</span> <span>14 400 ₽</span></div>
+            <div class="sub-item"><span>8 по 60 мин</span> <span>25 600 ₽</span></div>
+            <div class="sub-item"><span>6 по 90 мин</span> <span>25 500 ₽</span></div>
+            <div class="sub-item"><span>тело & лицо 8 по 120 мин</span> <span>44 800 ₽</span></div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

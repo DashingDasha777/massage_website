@@ -1,106 +1,151 @@
+/* --- Variables & Core Styles --- */
 :root {
     --primary-purple: #8e7cc3;
-    --soft-cream: #fdfaf6;
-    --warm-text: #4a3f35;
-    --accent-lavender: #d9d2e9;
+    --romantic-pink: #fce4ec; /* Light pink for gradient */
+    --warm-text: #5d4037;
+    --soft-white: #ffffff;
+    --serif-font: 'Alice', serif;
+    --cursive-font: 'Marck Script', cursive;
+    --body-font: 'Montserrat', sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', serif;
-    background-color: var(--soft-cream);
+    font-family: var(--body-font);
     color: var(--warm-text);
     margin: 0;
-    line-height: 1.6;
-    /* Floral background pattern */
-    background-image: url('https://www.transparenttextures.com/patterns/cream-pixels.png');
+    /* Pink to White Gradient Background */
+    background: linear-gradient(180deg, var(--romantic-pink) 0%, var(--soft-white) 100%);
+    background-attachment: fixed;
+    line-height: 1.8;
 }
 
+/* --- Typography Classes --- */
+.serif {
+    font-family: var(--serif-font);
+}
+
+.cursive {
+    font-family: var(--cursive-font);
+}
+
+h1 {
+    font-family: var(--serif-font);
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #4a148c; /* Deeper purple for contrast */
+}
+
+h2 {
+    font-family: var(--serif-font);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* --- Layout Adjustments --- */
 header {
-    padding: 20px 5%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 30px 8%;
+    background: transparent;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.logo {
+    font-size: 1.8rem;
+    color: var(--primary-purple);
 }
 
 .hero {
     display: flex;
     align-items: center;
-    padding: 60px 10%;
-    gap: 50px;
-    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
-                url('img/floral-bg.svg') center/cover;
+    justify-content: space-between;
+    padding: 80px 10%;
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .hero-image img {
-    width: 400px;
-    border-radius: 50% 50% 10px 10px;
-    border: 8px solid white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    /* Soft organic shape */
+    border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
+    border: 15px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.5s ease;
 }
 
+.hero-image img:hover {
+    transform: scale(1.02);
+}
+
+/* --- Education Section --- */
 .education {
-    padding: 50px 10%;
-    background-color: white;
+    padding: 100px 10%;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .edu-item {
-    padding: 20px;
-    background: var(--accent-lavender);
-    border-radius: 12px;
-    font-weight: bold;
-}
-
-/* Pricing Table */
-.price-table {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border-collapse: collapse;
-}
-
-.price-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Slider */
-.slider-container {
-    position: relative;
-    max-width: 500px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.slide {
-    display: none;
-    width: 100%;
-    border-radius: 15px;
-}
-
-.slide.active {
-    display: block;
-}
-
-.main-btn, .cta-button {
-    background-color: var(--primary-purple);
-    color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 25px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--romantic-pink);
+    border-radius: 20px;
+    text-align: center;
+    font-family: var(--serif-font);
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
     transition: 0.3s;
 }
 
-.main-btn:hover {
-    background-color: #674ea7;
+.edu-item:hover {
+    background: var(--soft-white);
+    transform: translateY(-5px);
+}
+
+/* --- Buttons --- */
+.main-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 40px;
+    background-color: var(--primary-purple);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(142, 124, 195, 0.3);
+}
+
+.cta-button {
+    text-decoration: none;
+    color: var(--warm-text);
+    border-bottom: 2px solid var(--primary-purple);
+    font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+    font-size: 0.9rem;
+    color: #9e9e9e;
 }

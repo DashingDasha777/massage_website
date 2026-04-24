@@ -45,6 +45,53 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* --- Handwritten main title (animated reveal, left-to-right) ---
+   Two-line layout: each line is a block-level span that starts fully
+   clipped on the right and animates to fully revealed. The second line
+   waits for the first to (nearly) finish before starting, mimicking the
+   pause when a hand moves to a new line. */
+.handwritten-title {
+    font-family: var(--cursive-font);
+    font-size: 3.8rem;
+    line-height: 1.15;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #4a148c;
+}
+
+.handwritten-title .line {
+    display: block;
+    width: fit-content;     /* shrink to text width so clip-path starts at the right edge of text */
+    max-width: 100%;
+    /* Negative vertical insets keep cursive ascenders/descenders from being cut off */
+    clip-path: inset(-20% 100% -20% 0);
+    animation-name: handwrite;
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    animation-fill-mode: forwards;
+}
+
+.handwritten-title .line:nth-child(1) {
+    animation-duration: 1.8s;
+    animation-delay: 0.2s;
+}
+
+.handwritten-title .line:nth-child(2) {
+    animation-duration: 1.3s;
+    animation-delay: 2.2s;
+}
+
+@keyframes handwrite {
+    to { clip-path: inset(-20% 0 -20% 0); }
+}
+
+/* Respect reduced-motion: show final state immediately */
+@media (prefers-reduced-motion: reduce) {
+    .handwritten-title .line {
+        animation: none;
+        clip-path: none;
+    }
+}
+
 /* --- Header & Nav --- */
 header {
     padding: 30px 8%;

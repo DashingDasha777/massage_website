@@ -8,6 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="pricing-page">
+    <!-- Decorative flower layer (same as index.html) -->
+    <div class="flowers" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+            <symbol id="flower" viewBox="0 0 80 80">
+                <g fill="currentColor">
+                    <ellipse cx="40" cy="20" rx="9" ry="17"/>
+                    <ellipse cx="40" cy="20" rx="9" ry="17" transform="rotate(72 40 40)"/>
+                    <ellipse cx="40" cy="20" rx="9" ry="17" transform="rotate(144 40 40)"/>
+                    <ellipse cx="40" cy="20" rx="9" ry="17" transform="rotate(216 40 40)"/>
+                    <ellipse cx="40" cy="20" rx="9" ry="17" transform="rotate(288 40 40)"/>
+                </g>
+                <circle cx="40" cy="40" r="6" fill="#fff6e5"/>
+            </symbol>
+        </svg>
+
+        <svg class="flower f1"><use href="#flower"/></svg>
+        <svg class="flower f2"><use href="#flower"/></svg>
+        <svg class="flower f3"><use href="#flower"/></svg>
+        <svg class="flower f4"><use href="#flower"/></svg>
+        <svg class="flower f5"><use href="#flower"/></svg>
+        <svg class="flower f6"><use href="#flower"/></svg>
+        <svg class="flower f7"><use href="#flower"/></svg>
+        <svg class="flower f8"><use href="#flower"/></svg>
+        <svg class="flower f9"><use href="#flower"/></svg>
+    </div>
+
     <header>
         <nav>
             <a href="index.html" class="back-link cursive">← На главную</a>
@@ -36,15 +62,15 @@
         <section class="certificate-section">
             <h2 class="serif">Подарочные сертификаты</h2>
             <p class="cursive text-center">Подарите близким моменты искренней радости</p>
-            
+
             <div class="slider-wrapper">
-                <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Предыдущий">&#10094;</button>
+                <button type="button" class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Предыдущий">&#10094;</button>
                 <div class="slider-display">
                     <img src="img/cert1.jpg" class="slide active" alt="Сертификат 60 мин">
                     <img src="img/cert2.jpg" class="slide" alt="Сертификат 90 мин">
                     <img src="img/cert3.jpg" class="slide" alt="Сертификат 120 мин">
                 </div>
-                <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Следующий">&#10095;</button>
+                <button type="button" class="slider-btn next" onclick="moveSlide(1)" aria-label="Следующий">&#10095;</button>
             </div>
         </section>
 

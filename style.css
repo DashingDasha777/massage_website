@@ -45,11 +45,11 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* --- Handwritten main title (animated reveal, left-to-right) ---
-   Two-line layout: each line is a block-level span that starts fully
-   clipped on the right and animates to fully revealed. The second line
-   waits for the first to (nearly) finish before starting, mimicking the
-   pause when a hand moves to a new line. */
+/* --- Handwritten main title (word-by-word reveal) ---
+   Each word lives in an inline-block span that starts fully clipped
+   on the right, then reveals with a short clip-path animation.
+   Staggered delays mean one word appears after the other, with a
+   visible pause between them — like watching someone write. */
 .handwritten-title {
     font-family: var(--cursive-font);
     font-size: 3.8rem;
@@ -60,33 +60,35 @@ h2 {
 }
 
 .handwritten-title .line {
-    display: block;
-    width: fit-content;     /* shrink to text width so clip-path starts at the right edge of text */
-    max-width: 100%;
-    /* Negative vertical insets keep cursive ascenders/descenders from being cut off */
-    clip-path: inset(-20% 100% -20% 0);
+    display: block;       /* stack the two lines */
+}
+
+.handwritten-title .word {
+    display: inline-block;
+    /* Negative vertical insets keep cursive ascenders/descenders intact */
+    clip-path: inset(-25% 100% -25% 0);
     animation-name: handwrite;
+    animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
     animation-fill-mode: forwards;
 }
 
-.handwritten-title .line:nth-child(1) {
-    animation-duration: 1.8s;
-    animation-delay: 0.2s;
-}
-
-.handwritten-title .line:nth-child(2) {
-    animation-duration: 1.3s;
-    animation-delay: 2.2s;
-}
+/* Per-word delays: each word starts 0.9s after the previous one begins,
+   so with a 0.5s reveal there is a ~0.4s pause between words. */
+.handwritten-title .line:nth-child(1) .word:nth-child(1) { animation-delay: 0.3s; }
+.handwritten-title .line:nth-child(1) .word:nth-child(2) { animation-delay: 1.2s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(1) { animation-delay: 2.1s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(2) { animation-delay: 3.0s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(3) { animation-delay: 3.9s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(4) { animation-delay: 4.8s; }
 
 @keyframes handwrite {
-    to { clip-path: inset(-20% 0 -20% 0); }
+    to { clip-path: inset(-25% 0 -25% 0); }
 }
 
 /* Respect reduced-motion: show final state immediately */
 @media (prefers-reduced-motion: reduce) {
-    .handwritten-title .line {
+    .handwritten-title .word {
         animation: none;
         clip-path: none;
     }

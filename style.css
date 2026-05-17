@@ -1,9 +1,8 @@
 /* --- Design tokens ---
    Warm, cozy palette: cream, peach and terracotta-rose instead of the
-   old pink/purple. The whole site is set in one flowing cursive,
-   Marck Script — an elegant Cyrillic-complete handwriting face (no
-   blocky/comic feel). Sizes are nudged up a little because flowing
-   script reads smaller than a sans. */
+   old pink/purple. The whole site is set in one font, Forum — an
+   elegant Cyrillic-complete Roman serif. Sizes are nudged up a little
+   because Forum is a delicate, low-contrast face that reads small. */
 :root {
     --cream:       #fff7ef; /* warm off-white */
     --peach:       #ffe7d3; /* soft peach */
@@ -13,9 +12,9 @@
     --warm-text:   #5b4334; /* cocoa brown – body copy */
     --soft-white:  #fffaf3;
 
-    --display-font: 'Marck Script', cursive;
-    --script-font:  'Marck Script', cursive;
-    --body-font:    'Marck Script', cursive;
+    --display-font: 'Forum', serif;
+    --script-font:  'Forum', serif;
+    --body-font:    'Forum', serif;
 
     /* legacy aliases kept so existing selectors keep working */
     --serif-font:   var(--display-font);

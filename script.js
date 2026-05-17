@@ -65,9 +65,54 @@ function initScrollReveal() {
     });
 }
 
+// --- Reviews flip-book (index page) ---
+// `i` is the index of the leaf currently facing the reader. Leaves
+// before it are "flipped" (turned to the left, around the spine);
+// leaves after it wait underneath. z-index keeps the leaf that is
+// mid-turn on top so the page-flip is actually visible, then a flipped
+// leaf is hidden by backface-visibility.
+function initBook() {
+    const stage = document.querySelector('.book-stage');
+    if (!stage) return;
+
+    const leaves = Array.prototype.slice.call(stage.querySelectorAll('.leaf'));
+    if (!leaves.length) return;
+
+    const prevBtn = document.querySelector('.book-nav.prev');
+    const nextBtn = document.querySelector('.book-nav.next');
+    const counter = document.querySelector('.book-cur');
+    const last = leaves.length - 1;
+    let i = 0;
+
+    function render() {
+        leaves.forEach((leaf, idx) => {
+            leaf.classList.toggle('flipped', idx < i);
+            // flipped pile sits highest (newest on top) so it animates
+            // over everything; current leaf next; upcoming leaves below.
+            leaf.style.zIndex =
+                idx < i  ? 100 + idx :
+                idx === i ? 50 :
+                            50 - (idx - i);
+        });
+        if (counter) counter.textContent = i + 1;
+        if (prevBtn) prevBtn.disabled = i === 0;
+        if (nextBtn) nextBtn.disabled = i === last;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        if (i > 0) { i--; render(); }
+    });
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        if (i < last) { i++; render(); }
+    });
+
+    render();
+}
+
 function init() {
     initSubscriptionCards();
     initScrollReveal();
+    initBook();
 }
 
 if (document.readyState === 'loading') {

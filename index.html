@@ -102,28 +102,16 @@
 
     <section class="reviews">
         <h2 class="serif">Отзывы</h2>
-        <p class="hint cursive">листайте страницы, как в книге</p>
+        <p class="hint cursive">что говорят наши гости</p>
 
-        <div class="book">
-            <button type="button" class="book-nav prev" aria-label="Предыдущий отзыв">&#10094;</button>
-            <div class="book-stage">
-                <div class="leaf"><img src="img/review1.jpg"  loading="lazy" alt="Отзыв 1"></div>
-                <div class="leaf"><img src="img/review2.jpg"  loading="lazy" alt="Отзыв 2"></div>
-                <div class="leaf"><img src="img/review3.jpg"  loading="lazy" alt="Отзыв 3"></div>
-                <div class="leaf"><img src="img/review4.jpg"  loading="lazy" alt="Отзыв 4"></div>
-                <div class="leaf"><img src="img/review5.jpg"  loading="lazy" alt="Отзыв 5"></div>
-                <div class="leaf"><img src="img/review6.jpg"  loading="lazy" alt="Отзыв 6"></div>
-                <div class="leaf"><img src="img/review7.jpg"  loading="lazy" alt="Отзыв 7"></div>
-                <div class="leaf"><img src="img/review8.jpg"  loading="lazy" alt="Отзыв 8"></div>
-                <div class="leaf"><img src="img/review9.jpg"  loading="lazy" alt="Отзыв 9"></div>
-                <div class="leaf"><img src="img/review10.jpg" loading="lazy" alt="Отзыв 10"></div>
-                <div class="leaf"><img src="img/review11.jpg" loading="lazy" alt="Отзыв 11"></div>
-                <div class="leaf"><img src="img/review12.jpg" loading="lazy" alt="Отзыв 12"></div>
-            </div>
-            <button type="button" class="book-nav next" aria-label="Следующий отзыв">&#10095;</button>
+        <!-- Three reviews shown at once; script.js cross-fades one slot
+             to the next review every few seconds. data-total tells the
+             script how many img/reviewN.jpg files exist. -->
+        <div class="reviews-row" data-total="12">
+            <div class="review-slot"><img src="img/review1.jpg" alt="Отзыв"></div>
+            <div class="review-slot"><img src="img/review2.jpg" alt="Отзыв"></div>
+            <div class="review-slot"><img src="img/review3.jpg" alt="Отзыв"></div>
         </div>
-
-        <p class="book-counter"><span class="book-cur">1</span> / 12</p>
     </section>
 
     <footer>

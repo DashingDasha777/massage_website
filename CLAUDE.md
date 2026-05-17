@@ -20,14 +20,14 @@ There is no lint/build/test tooling — changes are validated by viewing the two
 
 Two pages sharing one stylesheet and one script:
 
-- `index.html` — landing page: hero (with a Telegram-channel link), education cards (hover/focus reveals `.edu-desc`, CSS-only), and the reviews flip-book.
+- `index.html` — landing page: hero (with a Telegram-channel link), education cards (hover/focus reveals `.edu-desc`, CSS-only), and the auto-rotating reviews row.
 - `pricing.html` — price table (with the CloudTips booking button), gift-certificate slider, subscription cards.
 - `style.css` — single global stylesheet. Design tokens are CSS custom properties in `:root`: warm color palette (`--cream`, `--peach`, `--blush`, `--accent`, `--accent-deep`, `--warm-text`, `--soft-white`) and fonts (`--display-font`, `--script-font`, `--body-font`). Old `--serif-font`/`--cursive-font` names are kept as aliases. Reuse these variables rather than hardcoding values. Utility classes `.serif` (→ display) / `.cursive` (→ script) / `.text-center` apply by class.
 - `script.js` — loaded on **both** pages. Four behaviors, each a no-op if its targets are absent on the current page:
   - `moveSlide(step)` is **global by design** because the slider arrows call it via inline `onclick="moveSlide(±1)"` in `pricing.html`. Active slide is tracked by the `.active` class on one `.slide`.
   - `initSubscriptionCards()` wires click-to-highlight on `.sub-card` (single `.highlighted` at a time; re-clicking clears).
   - `initScrollReveal()` adds the `.reveal` class (then `.reveal-in` on intersection) to a JS-defined selector list — reveal styling is opt-in via JS so no-JS visitors still see content.
-  - `initBook()` drives the reviews flip-book (`index.html`): one `.leaf` faces the reader, `.flipped` + JS-managed `z-index` make the 3-D page-turn read correctly (CSS does the `rotateY`). Add/remove `img/reviewN.jpg` *and* the matching `.leaf` markup + the `/ N` counter together.
+  - `initReviews()` drives the reviews row (`index.html`): 3 `.review-slot img`s, one cross-fades (`.fading` → swap `src` → unfade) to the next review every few seconds, round-robin. The pool size comes from `.reviews-row[data-total]`; `src` is derived as `img/review{n}.jpg`. To add/remove reviews, drop the file in `img/` and update `data-total` only (no per-image markup).
   - `init()` runs all three `init*` functions on DOM ready.
 
 Cross-cutting conventions:

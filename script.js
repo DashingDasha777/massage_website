@@ -65,54 +65,63 @@ function initScrollReveal() {
     });
 }
 
-// --- Reviews flip-book (index page) ---
-// `i` is the index of the leaf currently facing the reader. Leaves
-// before it are "flipped" (turned to the left, around the spine);
-// leaves after it wait underneath. z-index keeps the leaf that is
-// mid-turn on top so the page-flip is actually visible, then a flipped
-// leaf is hidden by backface-visibility.
-function initBook() {
-    const stage = document.querySelector('.book-stage');
-    if (!stage) return;
+// --- Reviews auto-rotator (index page) ---
+// Three review images are shown at once. Every few seconds one slot
+// (round-robin) cross-fades to the next review, cycling through all
+// img/reviewN.jpg files. The pointer advances sequentially and there
+// are >3 reviews, so the three visible slots are never duplicates.
+function initReviews() {
+    const row = document.querySelector('.reviews-row');
+    if (!row) return;
 
-    const leaves = Array.prototype.slice.call(stage.querySelectorAll('.leaf'));
-    if (!leaves.length) return;
+    const imgs = Array.prototype.slice.call(row.querySelectorAll('img'));
+    if (!imgs.length) return;
 
-    const prevBtn = document.querySelector('.book-nav.prev');
-    const nextBtn = document.querySelector('.book-nav.next');
-    const counter = document.querySelector('.book-cur');
-    const last = leaves.length - 1;
-    let i = 0;
+    const total = parseInt(row.dataset.total, 10) || imgs.length;
+    if (total <= imgs.length) return; // nothing to rotate to
 
-    function render() {
-        leaves.forEach((leaf, idx) => {
-            leaf.classList.toggle('flipped', idx < i);
-            // flipped pile sits highest (newest on top) so it animates
-            // over everything; current leaf next; upcoming leaves below.
-            leaf.style.zIndex =
-                idx < i  ? 100 + idx :
-                idx === i ? 50 :
-                            50 - (idx - i);
-        });
-        if (counter) counter.textContent = i + 1;
-        if (prevBtn) prevBtn.disabled = i === 0;
-        if (nextBtn) nextBtn.disabled = i === last;
+    const SWAP_EVERY = 3500;          // ms between flips
+    const FADE_MS    = 850;           // must be >= the CSS opacity transition
+    const reduce = window.matchMedia &&
+                   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const src = (idx) => 'img/review' + (idx + 1) + '.jpg';
+
+    // Preload every review so swaps are instant (kept referenced).
+    const preloaded = [];
+    for (let k = 0; k < total; k++) {
+        const im = new Image();
+        im.src = src(k);
+        preloaded.push(im);
     }
 
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-        if (i > 0) { i--; render(); }
-    });
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-        if (i < last) { i++; render(); }
-    });
+    let pointer = imgs.length; // first three (0,1,2) are already on screen
+    let turn = 0;
 
-    render();
+    setInterval(() => {
+        if (document.hidden) return; // don't churn in a background tab
+
+        const slot = imgs[turn % imgs.length];
+        const nextIdx = pointer;
+        pointer = (pointer + 1) % total;
+        turn++;
+
+        if (reduce) {
+            slot.src = src(nextIdx);
+            return;
+        }
+        slot.classList.add('fading');                 // fade current out
+        setTimeout(() => {
+            slot.src = src(nextIdx);                   // swap while invisible
+            slot.classList.remove('fading');           // fade new one in
+        }, FADE_MS);
+    }, SWAP_EVERY);
 }
 
 function init() {
     initSubscriptionCards();
     initScrollReveal();
-    initBook();
+    initReviews();
 }
 
 if (document.readyState === 'loading') {

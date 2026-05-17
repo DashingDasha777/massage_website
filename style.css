@@ -1,8 +1,9 @@
 /* --- Design tokens ---
    Warm, cozy palette: cream, peach and terracotta-rose instead of the
-   old pink/purple. Fonts are all Cyrillic-complete Google families:
-   Yeseva One (warm display serif), Caveat (cozy handwriting),
-   Comfortaa (rounded, friendly body). */
+   old pink/purple. The whole site is set in one flowing cursive,
+   Marck Script — an elegant Cyrillic-complete handwriting face (no
+   blocky/comic feel). Sizes are nudged up a little because flowing
+   script reads smaller than a sans. */
 :root {
     --cream:       #fff7ef; /* warm off-white */
     --peach:       #ffe7d3; /* soft peach */
@@ -12,9 +13,9 @@
     --warm-text:   #5b4334; /* cocoa brown – body copy */
     --soft-white:  #fffaf3;
 
-    --display-font: 'Yeseva One', serif;
-    --script-font:  'Caveat', cursive;
-    --body-font:    'Comfortaa', sans-serif;
+    --display-font: 'Marck Script', cursive;
+    --script-font:  'Marck Script', cursive;
+    --body-font:    'Marck Script', cursive;
 
     /* legacy aliases kept so existing selectors keep working */
     --serif-font:   var(--display-font);
@@ -23,6 +24,10 @@
 
 * { box-sizing: border-box; }
 
+/* Bump the root size so the flowing script stays comfortably legible
+   everywhere (all rem-based sizes scale up with this). */
+html { font-size: 115%; }
+
 body {
     font-family: var(--body-font);
     color: var(--warm-text);
@@ -30,7 +35,8 @@ body {
     background: linear-gradient(170deg,
                 #ffefe0 0%, #fff6ec 45%, #ffe8d6 100%);
     background-attachment: fixed;
-    line-height: 1.85;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
     overflow-x: hidden;
 }
 
@@ -55,7 +61,7 @@ body::before {
 
 /* --- Typography helpers (class names used in the HTML) --- */
 .serif       { font-family: var(--display-font); }
-.cursive     { font-family: var(--script-font); font-weight: 600; }
+.cursive     { font-family: var(--script-font); }
 .text-center { text-align: center; }
 
 h1 {
@@ -90,7 +96,7 @@ h2 {
     font-family: var(--script-font);
     font-size: 4.2rem;
     line-height: 1.15;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 20px;
     color: var(--accent-deep);
 }
@@ -100,19 +106,19 @@ h2 {
 .handwritten-title .word {
     display: inline-block;
     opacity: 0;
-    transform: translateY(0.35em) rotate(-4deg);
-    filter: blur(8px);
-    animation: bloomIn 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    transform: translateY(0.3em) rotate(-3deg);
+    filter: blur(6px);
+    /* Each word's own reveal completes in 500ms (gradual, not abrupt). */
+    animation: bloomIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
-/* Cozy, gentle stagger: ~0.35s between words instead of the old
-   near-5-second wait. */
-.handwritten-title .line:nth-child(1) .word:nth-child(1) { animation-delay: 0.25s; }
-.handwritten-title .line:nth-child(1) .word:nth-child(2) { animation-delay: 0.60s; }
-.handwritten-title .line:nth-child(2) .word:nth-child(1) { animation-delay: 0.95s; }
-.handwritten-title .line:nth-child(2) .word:nth-child(2) { animation-delay: 1.25s; }
-.handwritten-title .line:nth-child(2) .word:nth-child(3) { animation-delay: 1.50s; }
-.handwritten-title .line:nth-child(2) .word:nth-child(4) { animation-delay: 1.80s; }
+/* Tight, flowing stagger so the line writes itself out quickly. */
+.handwritten-title .line:nth-child(1) .word:nth-child(1) { animation-delay: 0.10s; }
+.handwritten-title .line:nth-child(1) .word:nth-child(2) { animation-delay: 0.28s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(1) { animation-delay: 0.46s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(2) { animation-delay: 0.60s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(3) { animation-delay: 0.74s; }
+.handwritten-title .line:nth-child(2) .word:nth-child(4) { animation-delay: 0.88s; }
 
 @keyframes bloomIn {
     55%  { filter: blur(0); }
@@ -135,8 +141,7 @@ nav {
 
 .logo {
     font-family: var(--script-font);
-    font-size: 2.3rem;
-    font-weight: 700;
+    font-size: 2.6rem;
     color: var(--accent);
 }
 
@@ -238,9 +243,9 @@ nav {
     opacity: 0;
     overflow: hidden;
     font-family: var(--body-font);
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     font-weight: 400;
-    line-height: 1.7;
+    line-height: 1.6;
     color: var(--warm-text);
     transition: max-height 0.5s ease,
                 opacity 0.4s ease 0.05s,
@@ -262,8 +267,7 @@ nav {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
     color: #fff;
     font-family: var(--body-font);
-    font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.4rem;
     text-decoration: none;
     border-radius: 50px;
     letter-spacing: 0.5px;
@@ -287,8 +291,7 @@ nav {
 .cta-button,
 .back-link {
     font-family: var(--script-font);
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 1.7rem;
     color: var(--accent-deep);
     text-decoration: none;
     position: relative;
@@ -319,7 +322,7 @@ nav {
 footer {
     text-align: center;
     padding: 50px;
-    font-size: 0.9rem;
+    font-size: 1.15rem;
     color: #b08d76;
     position: relative;
     z-index: 1;
@@ -422,11 +425,12 @@ footer {
 .flower.f18 { top: 72%; left: 58%; width: 60px; height: 60px; color: #ead7c0;
               animation-name: flyRight; animation-duration: 48s; animation-delay: -30s; }
 
-/* --- Scroll reveal (added by script.js as elements enter view) --- */
+/* --- Scroll reveal (added by script.js as elements enter view) ---
+   Each element fades + rises in gradually over 500ms. */
 .reveal {
     opacity: 0;
-    transform: translateY(34px);
-    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transform: translateY(26px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .reveal.reveal-in {
@@ -462,9 +466,11 @@ footer {
 .elegant-table { width: 100%; border-collapse: collapse; }
 
 .elegant-table td {
-    padding: 18px 0;
+    padding: 16px 0;
     border-bottom: 1px dotted var(--blush);
     font-family: var(--body-font);
+    font-size: 1.35rem;
+    line-height: 1.4;
     transition: color 0.25s ease;
 }
 
@@ -474,7 +480,9 @@ footer {
     text-align: right;
     font-family: var(--display-font);
     color: var(--accent);
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    padding-left: 16px;
 }
 
 /* --- Certificate slider (portrait ~3:4, never cropped) --- */
@@ -581,8 +589,9 @@ footer {
 .sub-row {
     display: flex;
     justify-content: space-between;
+    gap: 12px;
     margin-bottom: 10px;
-    font-size: 0.9rem;
+    font-size: 1.15rem;
 }
 
 /* --- Reduced motion: keep it calm and static --- */

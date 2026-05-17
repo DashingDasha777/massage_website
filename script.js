@@ -34,12 +34,14 @@ function initScrollReveal() {
     // No IntersectionObserver (very old browser): leave content visible.
     if (!('IntersectionObserver' in window)) return;
 
-    // `stagger` (ms) makes grouped cards cascade in one after another.
+    // `stagger` (ms) makes grouped items cascade in one after another, so
+    // e.g. the price list "writes itself out" row by row while each row's
+    // own fade still finishes within 500ms.
     const groups = [
-        { sel: 'h2' },
+        { sel: 'h2' },                              // includes the "Прайс-лист" title
         { sel: '.hint' },
         { sel: '.promo-banner' },
-        { sel: '.price-card' },
+        { sel: '.elegant-table tr', stagger: 55 },  // price list, row by row
         { sel: '.slider-wrapper' },
         { sel: '.certificate-section p' },
         { sel: '.edu-item', stagger: 90 },
@@ -57,7 +59,7 @@ function initScrollReveal() {
     groups.forEach(({ sel, stagger }) => {
         document.querySelectorAll(sel).forEach((el, i) => {
             el.classList.add('reveal');
-            if (stagger) el.style.transitionDelay = (i % 6) * stagger + 'ms';
+            if (stagger) el.style.transitionDelay = Math.min(i, 10) * stagger + 'ms';
             io.observe(el);
         });
     });

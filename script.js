@@ -26,8 +26,50 @@ function initSubscriptionCards() {
     });
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSubscriptionCards);
-} else {
+// --- Cozy scroll reveal (both pages) ---
+// Elements gently rise + fade in as they scroll into view. The `reveal`
+// class is added by JS so visitors without JS still see everything; CSS
+// neutralises all of this under prefers-reduced-motion.
+function initScrollReveal() {
+    // No IntersectionObserver (very old browser): leave content visible.
+    if (!('IntersectionObserver' in window)) return;
+
+    // `stagger` (ms) makes grouped cards cascade in one after another.
+    const groups = [
+        { sel: 'h2' },
+        { sel: '.hint' },
+        { sel: '.promo-banner' },
+        { sel: '.price-card' },
+        { sel: '.slider-wrapper' },
+        { sel: '.certificate-section p' },
+        { sel: '.edu-item', stagger: 90 },
+        { sel: '.sub-card',  stagger: 90 }
+    ];
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('reveal-in');
+            io.unobserve(entry.target);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    groups.forEach(({ sel, stagger }) => {
+        document.querySelectorAll(sel).forEach((el, i) => {
+            el.classList.add('reveal');
+            if (stagger) el.style.transitionDelay = (i % 6) * stagger + 'ms';
+            io.observe(el);
+        });
+    });
+}
+
+function init() {
     initSubscriptionCards();
+    initScrollReveal();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
 }

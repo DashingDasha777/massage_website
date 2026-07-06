@@ -45,6 +45,8 @@ function initScrollReveal() {
         { sel: '.slider-wrapper' },
         { sel: '.certificate-section p' },
         { sel: '.edu-item', stagger: 90 },
+        { sel: '.location-map' },
+        { sel: '.location-info' },
         { sel: '.sub-card',  stagger: 90 }
     ];
 

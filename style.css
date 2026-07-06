@@ -275,6 +275,14 @@ nav {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* Two side-by-side CTAs (pricing page): even spacing, wrap on small screens. */
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px 26px;
+}
+
 .main-btn:hover {
     transform: translateY(-3px) scale(1.04);
     box-shadow: 0 14px 30px rgba(168, 90, 74, 0.45);

@@ -301,9 +301,16 @@ nav {
 /* Secondary hero link to the Telegram channel — sits below the main
    button, a touch smaller, same growing-underline flourish. */
 .tg-link {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     margin-top: 22px;
     font-size: 1.45rem;
+}
+
+/* Center a tg-link within a centered block (pricing page). */
+.tg-link-center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .back-link::after,

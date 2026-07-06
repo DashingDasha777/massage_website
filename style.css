@@ -285,9 +285,8 @@ nav {
     50%      { box-shadow: 0 10px 28px rgba(201, 138, 107, 0.55); }
 }
 
-/* Page-to-page links (header CTA and the "back" link) — now cozy
-   handwriting with a soft underline that grows on hover. */
-.cta-button,
+/* Page-to-page links (the "back" link and hero channel/pricing links) —
+   cozy handwriting with a soft underline that grows on hover. */
 .back-link,
 .tg-link {
     font-family: var(--script-font);
@@ -307,7 +306,6 @@ nav {
     font-size: 1.45rem;
 }
 
-.cta-button::after,
 .back-link::after,
 .tg-link::after {
     content: "";
@@ -322,11 +320,9 @@ nav {
     transition: transform 0.35s ease;
 }
 
-.cta-button:hover,
 .back-link:hover,
 .tg-link:hover { color: var(--accent); }
 
-.cta-button:hover::after,
 .back-link:hover::after,
 .tg-link:hover::after { transform: scaleX(1); }
 

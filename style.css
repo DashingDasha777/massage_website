@@ -740,6 +740,15 @@ footer a:hover { border-color: var(--accent); }
     font-size: 1.1rem;
 }
 
+.location-phone a {
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease;
+}
+
+.location-phone a:hover { border-color: var(--accent-deep); }
+
 /* --- Reduced motion: keep it calm and static --- */
 @media (prefers-reduced-motion: reduce) {
     body::before,

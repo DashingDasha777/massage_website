@@ -379,9 +379,7 @@ footer a:hover { border-color: var(--accent); }
     width: 56px;
     height: 56px;
     opacity: 0;
-    color: #f4a7c4;
-    fill: none;
-    stroke: currentColor;
+    object-fit: contain;
     filter: drop-shadow(0 4px 6px rgba(200, 90, 150, 0.12));
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
@@ -778,40 +776,10 @@ footer a:hover { border-color: var(--accent); }
     height: auto;
 }
 
-.promassage-play {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 78px;
-    height: 78px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.promassage-play::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 54%;
-    transform: translate(-50%, -50%);
-    border-style: solid;
-    border-width: 15px 0 15px 26px;
-    border-color: transparent transparent transparent var(--accent-deep);
-}
-
 .promassage-card:hover,
 .promassage-card:focus-visible {
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(168, 90, 74, 0.26);
-}
-
-.promassage-card:hover .promassage-play,
-.promassage-card:focus-visible .promassage-play {
-    transform: translate(-50%, -50%) scale(1.08);
-    background: #fff;
 }
 
 /* --- Reduced motion: keep it calm and static --- */

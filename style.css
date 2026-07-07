@@ -379,9 +379,10 @@ footer a:hover { border-color: var(--accent); }
     width: 56px;
     height: 56px;
     opacity: 0;
-    color: #f3c4a3;
-    fill: currentColor;
-    filter: drop-shadow(0 4px 6px rgba(168, 90, 74, 0.12));
+    color: #f4a7c4;
+    fill: none;
+    stroke: currentColor;
+    filter: drop-shadow(0 4px 6px rgba(200, 90, 150, 0.12));
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     will-change: transform, opacity;
@@ -421,41 +422,41 @@ footer a:hover { border-color: var(--accent); }
 }
 
 /* Per-flower: start position, size, warm colour, route, pace & delay */
-.flower.f1  { top:  6%; left:  4%; width: 58px; height: 58px; color: #f3c4a3;
+.flower.f1  { top:  6%; left:  4%; width: 58px; height: 58px; color: #f4a7c4;
               animation-name: flyRight; animation-duration: 30s; animation-delay:  0s; }
-.flower.f2  { top: 20%; left: 90%; width: 42px; height: 42px; color: #f6c5d1;
+.flower.f2  { top: 20%; left: 90%; width: 42px; height: 42px; color: #f6bcd4;
               animation-name: flyLeft;  animation-duration: 34s; animation-delay: -4s; }
-.flower.f3  { top: 52%; left:  2%; width: 72px; height: 72px; color: #ead7c0;
+.flower.f3  { top: 52%; left:  2%; width: 72px; height: 72px; color: #ec97ba;
               animation-name: flyRight; animation-duration: 42s; animation-delay: -9s; }
-.flower.f4  { top: 70%; left: 88%; width: 50px; height: 50px; color: #f0b89c;
+.flower.f4  { top: 70%; left: 88%; width: 50px; height: 50px; color: #f0a9c8;
               animation-name: flyLeft;  animation-duration: 36s; animation-delay: -2s; }
-.flower.f5  { top: 86%; left: 16%; width: 46px; height: 46px; color: #f5cbb4;
+.flower.f5  { top: 86%; left: 16%; width: 46px; height: 46px; color: #f7c9dc;
               animation-name: flyUp;    animation-duration: 33s; animation-delay: -6s; }
-.flower.f6  { top: 34%; left: 46%; width: 34px; height: 34px; color: #f3c4a3;
+.flower.f6  { top: 34%; left: 46%; width: 34px; height: 34px; color: #f4a7c4;
               animation-name: swaySoft; animation-duration: 14s; animation-delay: -3s; }
-.flower.f7  { top: 90%; left: 66%; width: 56px; height: 56px; color: #f6c5d1;
+.flower.f7  { top: 90%; left: 66%; width: 56px; height: 56px; color: #f6bcd4;
               animation-name: flyUp;    animation-duration: 38s; animation-delay: -12s; }
-.flower.f8  { top: 14%; left: 56%; width: 30px; height: 30px; color: #ead7c0;
+.flower.f8  { top: 14%; left: 56%; width: 30px; height: 30px; color: #ec97ba;
               animation-name: swaySoft; animation-duration: 17s; animation-delay: -7s; }
-.flower.f9  { top: 64%; left: 38%; width: 40px; height: 40px; color: #f0b89c;
+.flower.f9  { top: 64%; left: 38%; width: 40px; height: 40px; color: #f0a9c8;
               animation-name: flyRight; animation-duration: 46s; animation-delay: -20s; }
-.flower.f10 { top:  2%; left: 30%; width: 38px; height: 38px; color: #f5cbb4;
+.flower.f10 { top:  2%; left: 30%; width: 38px; height: 38px; color: #f7c9dc;
               animation-name: flyUp;    animation-duration: 40s; animation-delay: -16s; }
-.flower.f11 { top: 44%; left: 72%; width: 64px; height: 64px; color: #f3c4a3;
+.flower.f11 { top: 44%; left: 72%; width: 64px; height: 64px; color: #f4a7c4;
               animation-name: flyLeft;  animation-duration: 44s; animation-delay: -25s; }
-.flower.f12 { top: 78%; left:  6%; width: 36px; height: 36px; color: #f6c5d1;
+.flower.f12 { top: 78%; left:  6%; width: 36px; height: 36px; color: #f6bcd4;
               animation-name: flyRight; animation-duration: 35s; animation-delay: -14s; }
-.flower.f13 { top: 28%; left: 12%; width: 48px; height: 48px; color: #ead7c0;
+.flower.f13 { top: 28%; left: 12%; width: 48px; height: 48px; color: #ec97ba;
               animation-name: flyUp;    animation-duration: 37s; animation-delay: -8s; }
-.flower.f14 { top: 58%; left: 94%; width: 32px; height: 32px; color: #f0b89c;
+.flower.f14 { top: 58%; left: 94%; width: 32px; height: 32px; color: #f0a9c8;
               animation-name: flyLeft;  animation-duration: 31s; animation-delay: -18s; }
-.flower.f15 { top: 96%; left: 48%; width: 52px; height: 52px; color: #f5cbb4;
+.flower.f15 { top: 96%; left: 48%; width: 52px; height: 52px; color: #f7c9dc;
               animation-name: flyUp;    animation-duration: 43s; animation-delay: -22s; }
-.flower.f16 { top: 10%; left: 78%; width: 44px; height: 44px; color: #f3c4a3;
+.flower.f16 { top: 10%; left: 78%; width: 44px; height: 44px; color: #f4a7c4;
               animation-name: flyLeft;  animation-duration: 39s; animation-delay: -5s; }
-.flower.f17 { top: 40%; left: 26%; width: 28px; height: 28px; color: #f6c5d1;
+.flower.f17 { top: 40%; left: 26%; width: 28px; height: 28px; color: #f6bcd4;
               animation-name: swaySoft; animation-duration: 19s; animation-delay: -11s; }
-.flower.f18 { top: 72%; left: 58%; width: 60px; height: 60px; color: #ead7c0;
+.flower.f18 { top: 72%; left: 58%; width: 60px; height: 60px; color: #ec97ba;
               animation-name: flyRight; animation-duration: 48s; animation-delay: -30s; }
 
 /* --- Scroll reveal (added by script.js as elements enter view) ---
@@ -752,6 +753,66 @@ footer a:hover { border-color: var(--accent); }
 }
 
 .location-phone a:hover { border-color: var(--accent-deep); }
+
+/* --- "Про массаж" video button (index.html) --- */
+.promassage {
+    padding: 20px 6% 90px;
+    text-align: center;
+}
+
+.promassage-card {
+    position: relative;
+    display: block;
+    max-width: 640px;
+    margin: 28px auto 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--blush);
+    box-shadow: 0 10px 30px rgba(168, 90, 74, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promassage-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.promassage-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 78px;
+    height: 78px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.promassage-play::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent var(--accent-deep);
+}
+
+.promassage-card:hover,
+.promassage-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(168, 90, 74, 0.26);
+}
+
+.promassage-card:hover .promassage-play,
+.promassage-card:focus-visible .promassage-play {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: #fff;
+}
 
 /* --- Reduced motion: keep it calm and static --- */
 @media (prefers-reduced-motion: reduce) {

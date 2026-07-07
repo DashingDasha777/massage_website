@@ -32,7 +32,7 @@ Two pages sharing one stylesheet and one script:
 
 Cross-cutting conventions:
 
-- The decorative `.flowers` block (18 `<img class="flower f1..f18" src="img/flower.png">` instances) is duplicated verbatim in both HTML files — edit both together to keep them in sync. Each `.fN` gets its position/size/flight-route/timing from `style.css`; add a matching `.fN` rule there when adding instances. (The flower art is a raster PNG, so the leftover per-`.fN` `color:` tints in `style.css` are inert.)
+- The decorative `.flowers` SVG block (an inline `<symbol id="flower">` — an outlined 5-petal vector — plus the `.f1`–`.f18` `<use>` instances) is duplicated verbatim in both HTML files — edit both together to keep them in sync. Each `.fN` gets its position/size/color/flight-route/timing from `style.css`; the flower is stroked with `currentColor`, so the per-`.fN` `color:` sets each flower's pink tint. Add a matching `.fN` rule there when adding instances.
 - Animations are tuned cozy/warm and all gated behind `@media (prefers-reduced-motion: reduce)` — keep new motion within that contract.
 - All user-facing text is Russian; keep copy, `lang="ru"`, and the existing tone consistent.
 - The whole site is set in one font — **Forum** (elegant Roman serif) — loaded from a single Google Fonts `<link>` (with `preconnect` hints) in both pages' `<head>`. All three font tokens point at it; it's single-weight (400), so don't apply `font-weight` > 400 (faux-bold looks bad). Any replacement font must include the Cyrillic subset.

@@ -712,13 +712,15 @@ footer a:hover { border-color: var(--accent); }
     display: block;
 }
 
+/* Practical info sits as a horizontal strip below the map + form row */
 .location-info {
-    flex: 1 1 40%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    padding: 40px 35px;
+    align-items: center;
+    gap: 24px 64px;
+    margin-top: 28px;
+    padding: 30px 35px;
     text-align: center;
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid var(--blush);
@@ -754,9 +756,110 @@ footer a:hover { border-color: var(--accent); }
 
 .location-phone a:hover { border-color: var(--accent-deep); }
 
+/* --- Contact form (FormSubmit), sits next to the map --- */
+.contact-form {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 34px 32px;
+    background: var(--soft-white);
+    border: 1px solid var(--blush);
+    border-radius: 24px;
+    box-shadow: 0 12px 28px rgba(168, 90, 74, 0.12);
+}
+
+.contact-title {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--accent-deep);
+    text-align: center;
+}
+
+.contact-intro {
+    margin: 0 0 4px;
+    font-size: 1.3rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+}
+
+.contact-label {
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+    color: var(--accent-deep);
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+    font-size: 1.05rem;
+    color: var(--warm-text);
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--blush);
+    border-radius: 14px;
+    resize: vertical;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder { color: #c9a99a; }
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(201, 138, 107, 0.18);
+}
+
+/* Honeypot: hidden from users, kept out of the tab order */
+.contact-honey {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.contact-submit {
+    align-self: center;
+    margin-top: 6px;
+    padding: 14px 44px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+    color: #fff;
+    font-family: var(--body-font);
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(201, 138, 107, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-submit:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(168, 90, 74, 0.45);
+}
+
+.contact-submit:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
 /* --- "Про массаж" video button (index.html) --- */
 .promassage {
-    padding: 20px 6% 90px;
+    padding: 80px 6% 20px;
     text-align: center;
 }
 

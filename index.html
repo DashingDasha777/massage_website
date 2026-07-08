@@ -68,6 +68,30 @@
         </div>
     </section>
 
+    <section class="promassage">
+        <h2 class="serif">Про массаж</h2>
+        <p class="hint cursive">интервью о профессии и заботе о теле</p>
+        <a class="promassage-card" href="https://m.vk.com/wall-227406116_25"
+           target="_blank" rel="noopener"
+           aria-label="Смотреть видео «Про массаж» во ВКонтакте">
+            <img src="img/vk_podcast.png" alt="Про массаж — видео">
+        </a>
+    </section>
+
+    <section class="reviews">
+        <h2 class="serif">Отзывы</h2>
+        <p class="hint cursive">что говорят наши гости</p>
+
+        <!-- Three reviews shown at once; script.js cross-fades one slot
+             to the next review every few seconds. data-total tells the
+             script how many img/reviewN.jpg files exist. -->
+        <div class="reviews-row" data-total="12">
+            <div class="review-slot"><img src="img/review1.jpg" alt="Отзыв"></div>
+            <div class="review-slot"><img src="img/review2.jpg" alt="Отзыв"></div>
+            <div class="review-slot"><img src="img/review3.jpg" alt="Отзыв"></div>
+        </div>
+    </section>
+
     <section class="education">
         <h2 class="serif">Моё образование</h2>
         <p class="hint cursive">наведите на карточку, чтобы узнать подробнее</p>
@@ -111,46 +135,53 @@
                     loading="lazy"
                     allowfullscreen></iframe>
             </div>
-            <div class="location-info">
-                <p class="location-hours">
-                    <span class="location-label">Часы работы</span>
-                    10:30&nbsp;&ndash;&nbsp;21:30<br>
-                    <span class="location-note">(по предварительной записи)</span>
-                </p>
-                <p class="location-address">
-                    Москва,<br>
-                    Щербаковская, 35<br>
-                    м.&nbsp;Семёновская
-                </p>
-                <p class="location-phone">
-                    <a href="tel:+79150359899">+7&nbsp;(915)&nbsp;035-98-99</a>
-                </p>
-            </div>
+
+            <!-- Contact form (FormSubmit forwards submissions to dkazakova334@gmail.com).
+                 Note: on the first real submission FormSubmit e-mails that address a
+                 one-time link that must be clicked to activate forwarding. -->
+            <form class="contact-form" action="https://formsubmit.co/dkazakova334@gmail.com" method="POST">
+                <h3 class="serif contact-title">Свяжитесь с нами</h3>
+                <p class="contact-intro cursive">оставьте сообщение — мы ответим и поможем с записью</p>
+
+                <!-- FormSubmit configuration -->
+                <input type="hidden" name="_subject" value="Новое сообщение с сайта riarbert-massage.com">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://riarbert-massage.com/index.html">
+                <!-- Honeypot: hidden from users, catches spam bots -->
+                <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <label class="contact-field">
+                    <span class="contact-label">Имя</span>
+                    <input type="text" name="Имя" required autocomplete="name" placeholder="Как к вам обращаться">
+                </label>
+                <label class="contact-field">
+                    <span class="contact-label">E-mail</span>
+                    <input type="email" name="E-mail" required autocomplete="email" placeholder="you@example.com">
+                </label>
+                <label class="contact-field">
+                    <span class="contact-label">Сообщение</span>
+                    <textarea name="Сообщение" rows="4" required placeholder="Ваш вопрос или пожелание"></textarea>
+                </label>
+                <button type="submit" class="contact-submit">Отправить</button>
+            </form>
         </div>
-    </section>
 
-    <section class="reviews">
-        <h2 class="serif">Отзывы</h2>
-        <p class="hint cursive">что говорят наши гости</p>
-
-        <!-- Three reviews shown at once; script.js cross-fades one slot
-             to the next review every few seconds. data-total tells the
-             script how many img/reviewN.jpg files exist. -->
-        <div class="reviews-row" data-total="12">
-            <div class="review-slot"><img src="img/review1.jpg" alt="Отзыв"></div>
-            <div class="review-slot"><img src="img/review2.jpg" alt="Отзыв"></div>
-            <div class="review-slot"><img src="img/review3.jpg" alt="Отзыв"></div>
+        <div class="location-info">
+            <p class="location-hours">
+                <span class="location-label">Часы работы</span>
+                10:30&nbsp;&ndash;&nbsp;21:30<br>
+                <span class="location-note">(по предварительной записи)</span>
+            </p>
+            <p class="location-address">
+                Москва,<br>
+                Щербаковская, 35<br>
+                м.&nbsp;Семёновская
+            </p>
+            <p class="location-phone">
+                <a href="tel:+79150359899">+7&nbsp;(915)&nbsp;035-98-99</a>
+            </p>
         </div>
-    </section>
-
-    <section class="promassage">
-        <h2 class="serif">Про массаж</h2>
-        <p class="hint cursive">интервью о профессии и заботе о теле</p>
-        <a class="promassage-card" href="https://m.vk.com/wall-227406116_25"
-           target="_blank" rel="noopener"
-           aria-label="Смотреть видео «Про массаж» во ВКонтакте">
-            <img src="img/vk_podcast.png" alt="Про массаж — видео">
-        </a>
     </section>
 
     <script src="script.js"></script>

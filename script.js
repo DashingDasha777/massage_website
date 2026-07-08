@@ -120,10 +120,71 @@ function initReviews() {
     }, SWAP_EVERY);
 }
 
+// --- Contact form (index page): AJAX submit + inline thank-you bubble ---
+// Posts to FormSubmit's AJAX endpoint so the page never navigates away; a
+// small speech bubble confirms next to the Send button instead of opening
+// FormSubmit's own thank-you page. Without JS the plain form still POSTs to
+// the action URL (and returns via `_next`), so submissions still work.
+function initContactForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    const bubble = form.querySelector('.contact-bubble');
+    const button = form.querySelector('.contact-submit');
+    const endpoint = 'https://formsubmit.co/ajax/dkazakova334@gmail.com';
+
+    let hideTimer;
+    const showBubble = (msg, ok) => {
+        if (!bubble) return;
+        bubble.textContent = msg;
+        bubble.classList.toggle('error', !ok);
+        bubble.classList.add('show');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => bubble.classList.remove('show'), 6000);
+    };
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Honeypot filled in => almost certainly a bot; pretend success.
+        const honey = form.querySelector('.contact-honey');
+        if (honey && honey.value) {
+            showBubble('Спасибо за обращение!', true);
+            form.reset();
+            return;
+        }
+
+        const data = {};
+        new FormData(form).forEach((v, k) => { data[k] = v; });
+
+        if (button) button.disabled = true;
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data)
+        })
+            .then(r => r.json())
+            .then(res => {
+                if (res && (res.success === true || res.success === 'true')) {
+                    showBubble('Спасибо за обращение!', true);
+                    form.reset();
+                } else {
+                    showBubble('Не удалось отправить. Попробуйте ещё раз или позвоните нам.', false);
+                }
+            })
+            .catch(() => {
+                showBubble('Не удалось отправить. Попробуйте ещё раз или позвоните нам.', false);
+            })
+            .finally(() => { if (button) button.disabled = false; });
+    });
+}
+
 function init() {
     initSubscriptionCards();
     initScrollReveal();
     initReviews();
+    initContactForm();
 }
 
 if (document.readyState === 'loading') {

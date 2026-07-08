@@ -857,6 +857,74 @@ footer a:hover { border-color: var(--accent); }
     outline-offset: 3px;
 }
 
+/* Inline thank-you bubble that pops up beside the Send button */
+.contact-submit-wrap {
+    position: relative;
+    align-self: center;
+    display: inline-flex;
+}
+
+.contact-bubble {
+    --bubble-bg: var(--peach);
+    position: absolute;
+    left: calc(100% + 16px);
+    top: 50%;
+    transform: translateY(-50%) scale(0.85);
+    white-space: nowrap;
+    padding: 10px 16px;
+    background: var(--bubble-bg);
+    color: var(--accent-deep);
+    border: 1px solid var(--blush);
+    border-radius: 16px;
+    font-size: 1.05rem;
+    box-shadow: 0 8px 20px rgba(168, 90, 74, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contact-bubble::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 8px 6px 0;
+    border-style: solid;
+    border-color: transparent var(--bubble-bg) transparent transparent;
+}
+
+.contact-bubble.show {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+.contact-bubble.error {
+    --bubble-bg: #f7ddd6;
+    color: #a5392a;
+    white-space: normal;
+    max-width: 220px;
+}
+
+/* On narrow screens there's no room to the right — pop it above the button */
+@media (max-width: 700px) {
+    .contact-bubble {
+        left: 50%;
+        top: auto;
+        bottom: calc(100% + 12px);
+        transform: translateX(-50%) scale(0.85);
+    }
+    .contact-bubble.show { transform: translateX(-50%) scale(1); }
+    .contact-bubble::before {
+        left: 50%;
+        top: auto;
+        bottom: -8px;
+        transform: translateX(-50%);
+        border-width: 8px 6px 0 6px;
+        border-color: var(--bubble-bg) transparent transparent transparent;
+    }
+}
+
 /* --- "Про массаж" video button (index.html) --- */
 .promassage {
     padding: 80px 6% 20px;
